@@ -34,6 +34,7 @@ public class EducacionService implements iEducacionService {
     public Educacion buscarEducacion(Long id) {
        return eduRepo.findById(id).orElse(null);
     }
+    
       
 }
 
