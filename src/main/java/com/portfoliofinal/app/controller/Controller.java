@@ -21,7 +21,7 @@ public class Controller {
     
  @Autowired
  private iAcercaService acerServ;    
- @PreAuthorize ("hasRole('ADMIN')")
+ 
  @PostMapping("/new/acerca")
 public void agregarAcerca(@RequestBody Acerca acer){
 acerServ.crearAcerca(acer);
