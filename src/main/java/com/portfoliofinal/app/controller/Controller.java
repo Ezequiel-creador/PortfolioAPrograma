@@ -5,6 +5,7 @@ import com.portfoliofinal.app.model.Acerca;
 import com.portfoliofinal.app.service.iAcercaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ public class Controller {
     
  @Autowired
  private iAcercaService acerServ;    
-  
+ @PreAuthorize ("hasRole('ADMIN')")
  @PostMapping("/new/acerca")
 public void agregarAcerca(@RequestBody Acerca acer){
 acerServ.crearAcerca(acer);
@@ -31,7 +32,7 @@ acerServ.crearAcerca(acer);
 public List<Acerca> verAcercas(){
 return acerServ.verAcerca();
 }
-
+  @PreAuthorize ("hasRole('ADMIN')")
   @DeleteMapping("/delete/{id}")
    public void borrarAcerca (@PathVariable Long id) {
 acerServ.borrarAcerca(id);
